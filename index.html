@@ -1,162 +1,330 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barnamej | Software Solutions</title>
-    <style>
-        :root {
-            --bg-color: #0f1115;
-            --text-color: #e5e7eb;
-            --accent-color: #3b82f6;
-            --card-bg: #1f2937;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barnamej — Software Engineering, Done Right</title>
+<meta name="description" content="Barnamej builds backend systems, CLI tools, and automation for teams who need software that works correctly the first time.">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0 20px;
-        }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        header {
-            max-width: 800px;
-            margin: 80px auto 40px auto;
-            border-bottom: 1px solid #374151;
-            padding-bottom: 20px;
-        }
+<style>
+  :root {
+    --bnj-amber: #d99a4e;
+    --bnj-amber-dim: #a8763a;
+    --bnj-bg: #0d0d0d;
+    --bnj-bg-raised: #151515;
+    --bnj-border: #2a2a2a;
+  }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
+  body {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    background-color: var(--bnj-bg);
+    background-image:
+      linear-gradient(rgba(217, 154, 78, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(217, 154, 78, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #9ca3af;
-        }
+  ::selection { background-color: var(--bnj-amber); color: #0d0d0d; }
 
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+  .text-amber { color: var(--bnj-amber) !important; }
+  .bg-amber { background-color: var(--bnj-amber) !important; }
+  .border-amber { border-color: var(--bnj-amber) !important; }
 
-        .section-title {
-            font-size: 1.5rem;
-            margin: 40px 0 20px 0;
-            font-weight: 600;
-        }
+  .btn-amber {
+    background-color: var(--bnj-amber);
+    border-color: var(--bnj-amber);
+    color: #0d0d0d;
+    font-weight: 600;
+  }
+  .btn-amber:hover, .btn-amber:focus {
+    background-color: #e8ac63;
+    border-color: #e8ac63;
+    color: #0d0d0d;
+  }
+  .btn-outline-amber {
+    border-color: var(--bnj-amber-dim);
+    color: var(--bnj-amber);
+  }
+  .btn-outline-amber:hover, .btn-outline-amber:focus {
+    background-color: var(--bnj-amber);
+    border-color: var(--bnj-amber);
+    color: #0d0d0d;
+  }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+  .navbar {
+    background-color: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--bnj-border);
+  }
 
-        .service-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #374151;
-        }
+  .card-terminal {
+    background-color: var(--bnj-bg-raised);
+    border: 1px solid var(--bnj-border);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card-terminal:hover {
+    border-color: var(--bnj-amber-dim);
+    transform: translateY(-2px);
+  }
 
-        .service-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: var(--accent-color);
-        }
+  .prompt-caret::before {
+    content: "$ ";
+    color: var(--bnj-amber-dim);
+  }
 
-        .service-card p {
-            font-size: 0.95rem;
-            color: #d1d5db;
-        }
+  .blink-caret {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    background-color: var(--bnj-amber);
+    margin-left: 4px;
+    animation: blink 1.1s step-end infinite;
+    vertical-align: text-bottom;
+  }
+  @keyframes blink {
+    0%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blink-caret { animation: none; opacity: 1; }
+  }
 
-        .cta-section {
-            margin: 60px 0;
-            padding: 40px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            text-align: center;
-        }
+  .hairline { border-color: var(--bnj-border) !important; }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            text-decoration: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 4px;
-            margin-top: 20px;
-            transition: opacity 0.2s;
-        }
+  .stack-tag {
+    background-color: rgba(217, 154, 78, 0.08);
+    border: 1px solid var(--bnj-amber-dim);
+    color: var(--bnj-amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
 
-        .cta-button:hover {
-            opacity: 0.9;
-        }
+  .section-label {
+    color: var(--bnj-amber-dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-        footer {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #6b7280;
-            border-top: 1px solid #374151;
-            padding-top: 20px;
-        }
-    </style>
+  .display-mono {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  a { color: var(--bnj-amber); }
+  a:hover { color: #e8ac63; }
+
+  .footer-brand { letter-spacing: -0.01em; }
+</style>
 </head>
-<body>
+<body class="text-body">
 
-    <header>
-        <h1>Barnamej</h1>
-        <p class="subtitle">Ingénierie logicielle pragmatique & Solutions sur mesure.</p>
-    </header>
+<!-- Nav -->
+<nav class="navbar navbar-expand navbar-dark fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-5" href="#top">
+      barnamej<span class="text-amber">.</span><span class="text-amber">dev</span>
+    </a>
+    <div class="d-none d-sm-flex gap-4 align-items-center">
+      <a href="#about" class="text-decoration-none text-body-secondary small">about</a>
+      <a href="#services" class="text-decoration-none text-body-secondary small">services</a>
+      <a href="mailto:hello@barnamej.dev" class="btn btn-amber btn-sm px-3">get in touch</a>
+    </div>
+    <a href="mailto:hello@barnamej.dev" class="btn btn-amber btn-sm d-sm-none">contact</a>
+  </div>
+</nav>
 
-    <main>
-        <section>
-            <p>Nous concevons des logiciels robustes, maintenables et pensés pour la durabilité. Pas de complexité inutile, uniquement des architectures éprouvées et du code propre.</p>
-        </section>
-
-        <h2 class="section-title">Nos Services</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Refactorisation & Architecture</h3>
-                <p>Analyse et réécriture de bases de code existantes (TypeScript, Python). Application de patrons de conception pour réduire la dette technique et faciliter la maintenance à long terme.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Scripts & Automatisation</h3>
-                <p>Développement d'outils internes sur mesure pour automatiser vos processus répétitifs. Intégration d'APIs et traitement de données fiables et rapides.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Assurance Qualité & Tests</h3>
-                <p>Mise en place d'environnements de tests automatisés. Rédaction de tests unitaires et d'intégration pour sécuriser vos déploiements et garantir la stabilité de vos applications.</p>
-            </div>
+<!-- Hero -->
+<header id="top" class="d-flex align-items-center" style="min-height: 100vh; padding-top: 76px;">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <div class="d-inline-flex align-items-center gap-2 border border-amber-dim rounded-pill px-3 py-1 mb-4" style="border-color: var(--bnj-amber-dim);">
+          <span class="rounded-circle bg-amber" style="width:6px;height:6px;"></span>
+          <span class="small text-amber">available for new engagements</span>
         </div>
 
-        <section class="cta-section">
-            <h2>Prêt à optimiser vos processus ?</h2>
-            <p style="margin-top: 10px; color: #9ca3af;">Discutons de vos besoins techniques sans engagement.</p>
-            <!-- Remplace le mailto par ton lien Calendly ou ton courriel générique -->
-            <a href="mailto:contact@barnamej.com" class="cta-button">Prendre contact</a>
-        </section>
-    </main>
+        <h1 class="display-mono mb-4" style="font-size: clamp(2.25rem, 5.5vw, 4rem);">
+          Software that runs<br>
+          correctly<span class="text-amber">,</span> the first time<span class="blink-caret"></span>
+        </h1>
 
-    <footer>
-        <p>&copy; 2026 Barnamej Software. Tous droits réservés.</p>
-    </footer>
+        <p class="fs-5 text-body-secondary mx-auto mb-5" style="max-width: 620px;">
+          Barnamej is a software engineering practice for teams who need backend systems,
+          command-line tools, and data pipelines built by someone who reads the man page first.
+        </p>
 
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mb-5">
+          <a href="#services" class="btn btn-amber btn-lg px-4">View services</a>
+          <a href="mailto:hello@barnamej.dev" class="btn btn-outline-amber btn-lg px-4">Start a conversation</a>
+        </div>
+
+        <div class="prompt-caret text-start mx-auto p-3 rounded font-monospace small text-body-secondary" style="max-width: 520px; background-color: var(--bnj-bg-raised); border: 1px solid var(--bnj-border);">
+          barnamej --stack go,python,rust,c --focus backend,cli,automation
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- About -->
+<section id="about" class="py-5 border-top hairline">
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <div class="section-label mb-2">// about</div>
+        <h2 class="display-mono h1 mb-4">Built on fundamentals, not frameworks of the month.</h2>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge stack-tag rounded-1 px-2 py-2">Go</span>
+          <span class="badge stack-tag rounded-1 px-2 py-2">Python</span>
+          <span class="badge stack-tag rounded-1 px-2 py-2">Rust</span>
+          <span class="badge stack-tag rounded-1 px-2 py-2">C</span>
+          <span class="badge stack-tag rounded-1 px-2 py-2">POSIX</span>
+          <span class="badge stack-tag rounded-1 px-2 py-2">Linux</span>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <p class="fs-5 text-body-secondary mb-4">
+          Barnamej takes on the engineering work that doesn't tolerate shortcuts: services that
+          need to stay up, tools that need to run unattended, and pipelines that need to produce
+          the same correct answer every single time.
+        </p>
+        <p class="fs-5 text-body-secondary mb-4">
+          The approach favors low-level, performance-oriented languages and a terminal-first
+          workflow, because systems built that way tend to stay predictable long after
+          the first release. Every engagement starts with understanding the actual constraint,
+          not the trendiest way to work around it.
+        </p>
+        <p class="fs-5 text-body-secondary mb-0">
+          No bloated dependency trees. No solutions in search of a problem. Just software that
+          does what it says on the tin.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-5 border-top hairline">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-7">
+        <div class="section-label mb-2">// services</div>
+        <h2 class="display-mono h1 mb-3">What gets built</h2>
+        <p class="fs-5 text-body-secondary mb-0">
+          Three areas of focus, each grounded in tools chosen for the job rather than
+          convention.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Service 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-terminal rounded-3 p-4 h-100">
+          <div class="d-flex align-items-center justify-content-center rounded-2 mb-4"
+               style="width:48px;height:48px;background-color: rgba(217,154,78,0.08); border: 1px solid var(--bnj-amber-dim);">
+            <i class="bi bi-hdd-network text-amber fs-4"></i>
+          </div>
+          <h3 class="h5 fw-bold mb-3">Backend API Development</h3>
+          <p class="text-body-secondary mb-4">
+            Services and APIs built in Go or Python, designed around clear data contracts,
+            sane error handling, and infrastructure that doesn't page you at 3am.
+          </p>
+          <ul class="list-unstyled small text-body-secondary mb-0 d-flex flex-column gap-2">
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>REST &amp; RPC service design</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Database schema &amp; query design</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Authentication &amp; access control</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-terminal rounded-3 p-4 h-100">
+          <div class="d-flex align-items-center justify-content-center rounded-2 mb-4"
+               style="width:48px;height:48px;background-color: rgba(217,154,78,0.08); border: 1px solid var(--bnj-amber-dim);">
+            <i class="bi bi-terminal text-amber fs-4"></i>
+          </div>
+          <h3 class="h5 fw-bold mb-3">Custom CLI Tools &amp; Automation</h3>
+          <p class="text-body-secondary mb-4">
+            Command-line tools and system automation written in Rust or C, built to run
+            unattended, fail loudly when something's wrong, and stay fast under load.
+          </p>
+          <ul class="list-unstyled small text-body-secondary mb-0 d-flex flex-column gap-2">
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Internal developer tooling</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Scheduled jobs &amp; system daemons</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Workflow &amp; process automation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-terminal rounded-3 p-4 h-100">
+          <div class="d-flex align-items-center justify-content-center rounded-2 mb-4"
+               style="width:48px;height:48px;background-color: rgba(217,154,78,0.08); border: 1px solid var(--bnj-amber-dim);">
+            <i class="bi bi-diagram-3 text-amber fs-4"></i>
+          </div>
+          <h3 class="h5 fw-bold mb-3">Scientific Data Processing</h3>
+          <p class="text-body-secondary mb-4">
+            Pipelines for large or awkward datasets, from binary format conversion to
+            HPC-scale processing, built for correctness first and speed second.
+          </p>
+          <ul class="list-unstyled small text-body-secondary mb-0 d-flex flex-column gap-2">
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Data format conversion &amp; virtualization</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Batch &amp; HPC processing pipelines</li>
+            <li><i class="bi bi-chevron-right text-amber me-1"></i>Large-scale dataset optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA strip -->
+<section class="py-5 border-top hairline">
+  <div class="container py-4">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="display-mono h2 mb-3">Have a system that needs building?</h2>
+        <p class="fs-5 text-body-secondary mb-4">
+          Send a note describing the problem. No forms, no funnels — just email.
+        </p>
+        <a href="mailto:hello@barnamej.dev" class="btn btn-amber btn-lg px-4">
+          hello@barnamej.dev
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-top hairline py-4">
+  <div class="container">
+    <div class="row align-items-center g-3">
+      <div class="col-md-6 text-center text-md-start">
+        <span class="footer-brand fw-bold">barnamej<span class="text-amber">.</span>dev</span>
+        <span class="text-body-secondary small ms-2">// software engineering</span>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="mailto:hello@barnamej.dev" class="text-decoration-none small me-3">
+          <i class="bi bi-envelope me-1"></i>hello@barnamej.dev
+        </a>
+        <span class="text-body-secondary small">&copy; 2026</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
