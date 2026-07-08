@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barnamej | Software Solutions</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --text-color: #e5e7eb;
+            --accent-color: #3b82f6;
+            --card-bg: #1f2937;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        header {
+            max-width: 800px;
+            margin: 80px auto 40px auto;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #9ca3af;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px 0;
+            font-weight: 600;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #374151;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+
+        .cta-section {
+            margin: 60px 0;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: opacity 0.2s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Barnamej</h1>
+        <p class="subtitle">Ingénierie logicielle pragmatique & Solutions sur mesure.</p>
+    </header>
+
+    <main>
+        <section>
+            <p>Nous concevons des logiciels robustes, maintenables et pensés pour la durabilité. Pas de complexité inutile, uniquement des architectures éprouvées et du code propre.</p>
+        </section>
+
+        <h2 class="section-title">Nos Services</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Refactorisation & Architecture</h3>
+                <p>Analyse et réécriture de bases de code existantes (TypeScript, Python). Application de patrons de conception pour réduire la dette technique et faciliter la maintenance à long terme.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>Scripts & Automatisation</h3>
+                <p>Développement d'outils internes sur mesure pour automatiser vos processus répétitifs. Intégration d'APIs et traitement de données fiables et rapides.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>Assurance Qualité & Tests</h3>
+                <p>Mise en place d'environnements de tests automatisés. Rédaction de tests unitaires et d'intégration pour sécuriser vos déploiements et garantir la stabilité de vos applications.</p>
+            </div>
+        </div>
+
+        <section class="cta-section">
+            <h2>Prêt à optimiser vos processus ?</h2>
+            <p style="margin-top: 10px; color: #9ca3af;">Discutons de vos besoins techniques sans engagement.</p>
+            <!-- Remplace le mailto par ton lien Calendly ou ton courriel générique -->
+            <a href="mailto:contact@barnamej.com" class="cta-button">Prendre contact</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Barnamej Software. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
